@@ -1,0 +1,76 @@
+﻿<Window x:Class="Rentopoly.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rentopoly"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:rentals="clr-namespace:Rentopoly.Rentals"
+        xmlns:games="clr-namespace:Rentopoly.Games"
+        mc:Ignorable="d"
+        Style="{StaticResource MaterialDesignWindow}"
+        Title="Demo App" Height="450" Width="800">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <TabControl materialDesign:ColorZoneAssist.Mode="PrimaryMid"
+                Grid.Row="0"
+                Style="{StaticResource MaterialDesignNavigationRailTabControl}">
+      <TabItem>
+        <TabItem.Header>
+          <StackPanel>
+            <materialDesign:PackIcon 
+              Width="35"
+              Height="35"
+              HorizontalAlignment="Center"
+              Kind="Games"/>
+            <TextBlock HorizontalAlignment="Center"
+                       Text="Game Catalog" 
+                       TextAlignment="Center" 
+                       TextWrapping="Wrap"/>
+          </StackPanel>
+        </TabItem.Header>
+        <games:CatalogView x:Name="GameCatalogView"/>
+      </TabItem>
+
+      <TabItem>
+        <TabItem.Header>
+          <StackPanel>
+            <materialDesign:PackIcon 
+              Width="35" 
+              Height="35" 
+              HorizontalAlignment="Center" 
+              Kind="ClockPlus"/>
+            <TextBlock HorizontalAlignment="Center" 
+                       Text="New Rental" 
+                       TextAlignment="Center" 
+                       TextWrapping="Wrap"/>
+          </StackPanel>
+        </TabItem.Header>
+        <rentals:AddRentalView x:Name="AddRentalView"/>
+      </TabItem>
+
+      <!--View Rentals-->
+      <TabItem>
+        <TabItem.Header>
+          <StackPanel>
+            <materialDesign:PackIcon 
+              Width="35" 
+              Height="35" 
+              HorizontalAlignment="Center" 
+              Kind="Clock"/>
+            <TextBlock HorizontalAlignment="Center" 
+                       Text="View Rentals" 
+                       TextAlignment="Center" 
+                       TextWrapping="Wrap"/>
+          </StackPanel>
+        </TabItem.Header>
+        <rentals:ViewRentalsView x:Name="ViewRentalsView"/>
+      </TabItem>
+
+    </TabControl>
+  </Grid>
+</Window>
